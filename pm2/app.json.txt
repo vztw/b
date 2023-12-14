@@ -1,0 +1,23 @@
+packange.json
+
+    "pm2:deploy:app": "npm run build && pm2 start app.json",
+    "pm2:start:app": "pm2 start app.json",
+    "pm2:stop:app": "pm2 stop app.json",
+    "pm2:destroy:app": "pm2 delete app.json"
+
+app.json
+
+{
+  "apps": [
+    {
+      "name": "app",
+      "script": "dist/main.js",
+      "instances": 1,
+      "exec_mode": "cluster",
+      "env": {
+        "NODE_ENV": "prod",
+        "PORT": 3000
+      }
+    }
+  ]
+}
